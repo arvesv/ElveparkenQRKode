@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
+    <title>QR Code for ladebokser i Elveparken</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -79,11 +79,24 @@
 
 <body>
     <div class="container">
-        <h1>QR Code Generator</h1>
-        <input type="text" id="text-input" placeholder="Enter text here...">
-        <button id="generate-btn">Generate QR Code</button>
+        <h1>Elveparken Ladeboks QR generator</h1>
+        <div class="body">
+            <p>Du kan lage en QR-kode for ladeboksen din ved å taste inn leilighetsnummeret ditt (0-150) i feltet og
+                så på knappen "Lag QR Code".</p>
+            <p>QR-koden vil inneholde en unik verdi for ladeboksen og kan brukes fra
+                Wattif appen - det kan være enklere enn å søke fram ladeboksen manuelt i appen.</p>
+            <p>Jeg (Arve) har printet ut QR koden og tapet den fast på laderen</p>
+            </p>
+        </div>
+        <input type="text" id="text-input" placeholder="Tast inn ditt leilighetsnummer">
+
+        <button id="generate-btn">Lag QR Code</button>
         <div id="qrcode"></div>
-        <div class="footer">Made with ❤️ using client-side JavaScript</div>
+        <div class="footer">
+            <a href="https://github.com/arvesv/ElveparkenQRKode" target="_blank" rel="noopener">
+                kildekode
+            </a>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
@@ -106,7 +119,15 @@
         }
 
         btn.addEventListener('click', () => {
-            generateQR(input.value);
+            var s = input.value;
+            var num = parseInt(s, 10);
+            if (isNaN(num) || num < 0 || num > 150) {
+                alert("Legg inn en verdi mellom 0 og 150.");
+                return;
+            }
+
+            let myValue = "W0" + (47676000 + num).toString();
+            generateQR(myValue);
         });
 
         input.addEventListener('keydown', (e) => {

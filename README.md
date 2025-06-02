@@ -1,7 +1,7 @@
 # QR kode generator for ladeboksene i Elveparken/Wattif
 
-Dette er en statisk Web site for a generere en QR kode for ladeboksen din i Elveparken. 
-Wattif appen kan skanne QR koden for å finne laderen.
+Dette er en Statisk Web Side for a generere en QR kode for elbil laderne 
+i Elveparken.
 
 
 
