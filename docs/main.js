@@ -29,6 +29,22 @@ btn.addEventListener('click', () => {
 
     let myValue = "W0" + (47676000 + num).toString();
     generateQR(myValue);
+
+
+    document.querySelector('.body').style.display = 'none';
+    document.getElementById('text-input').style.display = 'none';
+    document.getElementById('generate-btn').style.display = 'none';
+
+    const h1 = document.querySelector('h1');
+    if (h1) {
+        h1.textContent = `Elveparken #${num}`;
+    }
+
+    const footer = document.querySelector('.footer');
+    if (footer) {
+        footer.textContent = "Lag din egen QR kode på https://arvesv.com/ElveparkenQRKode/";
+    }
+
 });
 
 input.addEventListener('keydown', (e) => {
